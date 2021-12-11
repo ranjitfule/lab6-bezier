@@ -1,1 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+*{ padding: 0; margin: 0; box-sizing: border-box; }
+.app{
+	width: 400px;
+	border: 1px solid gray;
+	position: relative;
+	top: 40px;
+	left: 50px;
+	overflow: hidden;
+}
+
+#t1{
+
+	width: 100%;
+	height: 40px;
+	border: none;
+	font-size: 16px;
+	border-bottom: 1px solid gray;
+	padding-left: 20px;
+}
+
+#list{
+
+	overflow: auto;
+	list-style: none;
+	height: 540px;
+	width: 100%;
+	background: #efefef;
+}
+
+#list li{
+	padding: 10px;
+}
+
+h1{
+	position: relative;
+	left: 60px;
+	top: 20px;
+}
+
+
+</style>
+</head>
+<body>
+<h1>Filter List App</h1>
+<div class="app">
+<input type="text" id="t1">
+<ul id="list"></ul>
+</div>
+</body>
+<script>
+
+var country_list = ["Afghanistan","Albania","Algeria","Andorra","Angola","Anguilla","Antigua &amp; Barbuda","Argentina","Armenia","Aruba","Australia","Austria","Azerbaijan","Bahamas","Bahrain","Bangladesh","Barbados","Belarus","Belgium","Belize","Benin","Bermuda","Bhutan","Bolivia","Bosnia &amp; Herzegovina","Botswana","Brazil","British Virgin Islands","Brunei","Bulgaria","Burkina Faso","Burundi","Cambodia","Cameroon","Cape Verde","Cayman Islands","Chad","Chile","China","Colombia","Congo","Cook Islands","Costa Rica","Cote D Ivoire","Croatia","Cruise Ship","Cuba","Cyprus","Czech Republic","Denmark","Djibouti","Dominica","Dominican Republic","Ecuador","Egypt","El Salvador","Equatorial Guinea","Estonia","Ethiopia","Falkland Islands","Faroe Islands","Fiji","Finland","France","French Polynesia","French West Indies","Gabon","Gambia","Georgia","Germany","Ghana","Gibraltar","Greece","Greenland","Grenada","Guam","Guatemala","Guernsey","Guinea","Guinea Bissau","Guyana","Haiti","Honduras","Hong Kong","Hungary","Iceland","India","Indonesia","Iran","Iraq","Ireland","Isle of Man","Israel","Italy","Jamaica","Japan","Jersey","Jordan","Kazakhstan","Kenya","Kuwait","Kyrgyz Republic","Laos","Latvia","Lebanon","Lesotho","Liberia","Libya","Liechtenstein","Lithuania","Luxembourg","Macau","Macedonia","Madagascar","Malawi","Malaysia","Maldives","Mali","Malta","Mauritania","Mauritius","Mexico","Moldova","Monaco","Mongolia","Montenegro","Montserrat","Morocco","Mozambique","Namibia","Nepal","Netherlands","Netherlands Antilles","New Caledonia","New Zealand","Nicaragua","Niger","Nigeria","Norway","Oman","Pakistan","Palestine","Panama","Papua New Guinea","Paraguay","Peru","Philippines","Poland","Portugal","Puerto Rico","Qatar","Reunion","Romania","Russia","Rwanda","Saint Pierre &amp; Miquelon","Samoa","San Marino","Satellite","Saudi Arabia","Senegal","Serbia","Seychelles","Sierra Leone","Singapore","Slovakia","Slovenia","South Africa","South Korea","Spain","Sri Lanka","St Kitts &amp; Nevis","St Lucia","St Vincent","St. Lucia","Sudan","Suriname","Swaziland","Sweden","Switzerland","Syria","Taiwan","Tajikistan","Tanzania","Thailand","Timor L'Este","Togo","Tonga","Trinidad &amp; Tobago","Tunisia","Turkey","Turkmenistan","Turks &amp; Caicos","Uganda","Ukraine","United Arab Emirates","United Kingdom","Uruguay","Uzbekistan","Venezuela","Vietnam","Virgin Islands (US)","Yemen","Zambia","Zimbabwe"];
+
+var ul = document.getElementById("list");
+
+for(var x = 0; x < country_list.length; x++){
+
+	var li = document.createElement("li");
+	li.innerHTML = country_list[x];
+	ul.appendChild(li);
+
+}
+
+var input = document.getElementById("t1")
+
+input.oninput = function(){
+	var str = input.value.toLowerCase();	
+	var lis = ul.getElementsByTagName("li");
+	for(var x = 0; x < lis.length; x++){
+	
+		if(lis[x].innerHTML.toLowerCase().startsWith(str) == 1){
+			lis[x].style.display = "block";
+		}else{
+			lis[x].style.display = "none";
+		}
+	
+	}
+}
+
+
+</script>
+</html>
+
 
